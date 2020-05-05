@@ -1,0 +1,10 @@
+{
+  "development": {
+    "apiUrl": "https://freeb5-content-ghost-v3.herokuapp.com",
+    "contentApiKey": "830f5721aff81c737084668431"
+  },
+  "production": {
+    "apiUrl": "https://freeb5-content-ghost-v3.herokuapp.com",
+    "contentApiKey": "830f5721aff81c737084668431"
+  }
+}
