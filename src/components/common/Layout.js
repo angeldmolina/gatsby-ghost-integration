@@ -73,12 +73,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     </main>
 
                 </div>
-                { isHome ?
-                <div className="site-banner">
-                    <h1 className="site-banner-title">{site.title}</h1>
-                    <p className="site-banner-desc">{site.description}</p>
-                </div> :
-                null}
 
                 <div className="viewport-bottom">
                     {/* The footer at the very bottom of the screen */}
@@ -121,10 +115,17 @@ const DefaultLayoutSettingsQuery = props => (
                         }
                     }
                 }
-                file(relativePath: {eq: "ghost-icon.png"}) {
+                charachters: file(relativePath: {eq: "charachters.jpg"}) {
                     childImageSharp {
-                        fixed(width: 30, height: 30) {
-                            ...GatsbyImageSharpFixed
+                        fluid(maxWidth: 1200) {
+                            ...GatsbyImageSharpFluid
+                        }
+                    }
+                }
+                jumppoint: file(relativePath: {eq: "jumppoint.jpg"}) {
+                    childImageSharp {
+                        fluid(maxWidth: 1200) {
+                            ...GatsbyImageSharpFluid
                         }
                     }
                 }

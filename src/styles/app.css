@@ -675,7 +675,13 @@ h6 {
     background-position: center;
     background-size: cover;
 }
-
+.site-head-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
 .site-nav-item {
     display: inline-block;
     padding: 5px 10px;
