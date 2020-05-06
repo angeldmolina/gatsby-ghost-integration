@@ -40,6 +40,8 @@ const Post = ({ data, location }) => {
                                 className="content-body load-external-scripts"
                                 dangerouslySetInnerHTML={{ __html: post.html }}
                             />
+                            <hr/>
+                            <div>Published on {post.published_at_pretty}</div>
                         </section>
                     </article>
                 </div>
