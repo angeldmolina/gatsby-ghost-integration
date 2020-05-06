@@ -22,7 +22,7 @@ const PostCard = ({ post }) => {
             <section className="post-card-excerpt">{post.excerpt}</section>
             <footer className="post-card-footer">
                 <div className="post-card-footer-left"/>
-                    <div>Published on {post.published_at_pretty}</div>
+                <div>Published on {post.published_at_pretty}</div>
                 <div className="post-card-footer-right">
                     <div>{readingTime}</div>
                 
@@ -37,6 +37,7 @@ PostCard.propTypes = {
         slug: PropTypes.string.isRequired,
         title: PropTypes.string.isRequired,
         feature_image: PropTypes.string,
+        published_at_pretty: PropTypes.string,
         featured: PropTypes.bool,
         tags: PropTypes.arrayOf(
             PropTypes.shape({
