@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 
-import { Layout } from '../components/common'
+import { Layout, Wrapper } from '../components/common'
 import { MetaData } from '../components/common/meta'
 
 /**
@@ -26,7 +26,7 @@ const Page = ({ data, location }) => {
                 <style type="text/css">{`${page.codeinjection_styles}`}</style>
             </Helmet>
             <Layout>
-                <div className="container">
+                <Wrapper className="container">
                     <article className="content">
                         <h1 className="content-title">{page.title}</h1>
 
@@ -36,7 +36,7 @@ const Page = ({ data, location }) => {
                             dangerouslySetInnerHTML={{ __html: page.html }}
                         />
                     </article>
-                </div>
+                </Wrapper>
             </Layout>
         </>
     )

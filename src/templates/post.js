@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 
-import { Layout } from '../components/common'
+import { Layout, Wrapper } from '../components/common'
 import { MetaData } from '../components/common/meta'
 
 /**
@@ -26,7 +26,7 @@ const Post = ({ data, location }) => {
                 <style type="text/css">{`${post.codeinjection_styles}`}</style>
             </Helmet>
             <Layout>
-                <div className="container">
+                <Wrapper className="container">
                     <article className="content">
                         { post.feature_image ?
                             <figure className="post-feature-image">
@@ -44,7 +44,7 @@ const Post = ({ data, location }) => {
                             <div>Published on {post.published_at_pretty}</div>
                         </section>
                     </article>
-                </div>
+                </Wrapper>
             </Layout>
         </>
     )

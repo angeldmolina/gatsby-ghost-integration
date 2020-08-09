@@ -1,15 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
 
 import GlobalStyles from '../../styles/GlobalStyles'
 import Header from '../common/Header'
 import Footer from '../common/Footer'
-
-const Main = styled.main`
-    padding: 1em;
-`
 
 const DefaultLayout = ({ data, children, isHome }) => {
     const site = data.allGhostSettings.edges[0].node
@@ -21,9 +16,9 @@ const DefaultLayout = ({ data, children, isHome }) => {
 
                 <Header data={data} site={site} isHome={isHome}/>
 
-                <Main>
+                <main>
                     {children}
-                </Main>
+                </main>
 
                 <Footer site={site}/>
 
