@@ -2,7 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
-import { Wrapper, Layout, PostCard, Pagination } from '../components/common'
+import Wrapper from '../components/common/Wrapper'
+import Layout from '../components/common/Layout'
+import PostCard from '../components/common/PostCard'
+import Pagination from '../components/common/Pagination'
 import { MetaData } from '../components/common/meta'
 
 /**

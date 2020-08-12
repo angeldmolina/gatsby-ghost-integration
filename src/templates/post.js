@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 
-import { Layout, Wrapper } from '../components/common'
+import Wrapper from '../components/common/Wrapper'
+import Layout from '../components/common/Layout'
 import { MetaData } from '../components/common/meta'
 
 /**
