@@ -5,11 +5,42 @@ import { Link } from 'gatsby'
 import config from '../../utils/siteConfig'
 import { Navigation } from '.'
 
+import bg from '../../images/pg-bckg.png'
+
 const SHeader = styled.header`
     min-height: 20vh;
     background-size: cover;
     background-repeat: none;
     padding: 1em;
+`
+
+const PrimaryNav = styled.nav`
+    background: black;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    padding: 0 40px;
+    background-image: url(${bg});
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        align-items: center;
+    }
+`
+
+const SocialLinks = styled.div`
+    margin-left: auto;
+
+    a {
+        padding: 20px;
+
+        &:hover,
+        &:active,
+        &:focus {
+            color: darkblue;
+            background-color: grey;
+        }
+    }
 `
 
 const Header = ({ data, site, isHome }) => {
@@ -18,33 +49,28 @@ const Header = ({ data, site, isHome }) => {
     return (
         <SHeader className="site-head" style={{ ...site.cover_image && { backgroundImage: `url(${site.cover_image})` } }}>
             <div className="container">
-                <div className="site-mast">
-                    <div className="site-mast-left">
-                        <Link to="/">
-                            {site.logo ?
-                                <img className="site-logo" src={site.logo} alt={site.title} />
-                                : <Img fixed={data.logo.childImageSharp.fixed} alt={site.title} />
-                            }
-                        </Link>
+                <PrimaryNav className="site-nav">
+                    <Link to="/">
+                        {site.logo ?
+                            <img className="site-logo" src={site.logo} alt={site.title} width="320px" height="auto"/>
+                            : <Img fixed={data.logo.childImageSharp.fixed} alt={site.title} />
+                        }
+                    </Link>
+                    <div className="site-nav-left">
+                        <Navigation data={site.navigation} navClass="site-nav-item" />
                     </div>
-                    <div className="site-mast-right">
+                    <SocialLinks>
                         { site.twitter && <a href={ twitterUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/twitter.svg" alt="Twitter" height="24" width="24"/></a>}
                         { site.facebook && <a href={ facebookUrl } className="site-nav-item" target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/facebook.svg" alt="Facebook" height="24" width="24" /></a>}
                         <a className="site-nav-item" href={ `https://feedly.com/i/subscription/feed/${config.siteUrl}/rss/` } target="_blank" rel="noopener noreferrer"><img className="site-nav-icon" src="/images/icons/rss.svg" alt="RSS Feed" height="24" width="24" /></a>
-                    </div>
-                </div>
+                    </SocialLinks>
+                </PrimaryNav>
                 { isHome ?
                     <div className="site-banner">
                         <h1 className="site-banner-title">{site.title}</h1>
                         <p className="site-banner-desc">{site.description}</p>
                     </div> :
                     null}
-                <nav className="site-nav">
-                    <div className="site-nav-left">
-                        {/* The navigation items as setup in Ghost */}
-                        <Navigation data={site.navigation} navClass="site-nav-item" />
-                    </div>
-                </nav>
             </div>
         </SHeader>
     )
