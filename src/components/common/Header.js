@@ -32,7 +32,8 @@ const SocialLinks = styled.div`
     margin-left: auto;
 
     a {
-        padding: 20px;
+        display: inline-block;
+        padding: 20px 20px 10px 20px;
 
         &:hover,
         &:active,
@@ -43,6 +44,11 @@ const SocialLinks = styled.div`
     }
 `
 
+const LogoLink = styled(Link)`
+    display: block;
+    margin-top: 6px;
+`
+
 const Header = ({ data, site, isHome }) => {
     const twitterUrl = site.twitter ? `https://twitter.com/${site.twitter.replace(/^@/, ``)}` : null
     const facebookUrl = site.facebook ? `https://www.facebook.com/${site.facebook.replace(/^\//, ``)}` : null
@@ -50,12 +56,12 @@ const Header = ({ data, site, isHome }) => {
         <SHeader className="site-head" style={{ ...site.cover_image && { backgroundImage: `url(${site.cover_image})` } }}>
             <div className="container">
                 <PrimaryNav className="site-nav">
-                    <Link to="/">
+                    <LogoLink to="/">
                         {site.logo ?
                             <img className="site-logo" src={site.logo} alt={site.title} width="320px" height="auto"/>
                             : <Img fixed={data.logo.childImageSharp.fixed} alt={site.title} />
                         }
-                    </Link>
+                    </LogoLink>
                     <div className="site-nav-left">
                         <Navigation data={site.navigation} navClass="site-nav-item" />
                     </div>
