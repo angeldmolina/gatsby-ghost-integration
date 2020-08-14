@@ -9,13 +9,14 @@ const PostCard = ({ post }) => {
     const readingTime = readingTimeHelper(post)
 
     return (
-        <Link to={url} className="post-card">
+        <div>
             <header className="post-card-header">
                 {post.feature_image &&
                     <div className="post-card-image" style={{
                         backgroundImage: `url(${post.feature_image})` ,
                     }}></div>}
-                <h2 className="post-card-title">{post.title}</h2>
+                <Link to={url}>
+                    <h2 className="post-card-title">{post.title}</h2></Link>
                 {post.tags && <div className="post-card-tags">Posted in: <Tags post={post} visibility="public" autolink={false} /></div>}
                 {post.featured && <span>Featured</span>}
             </header>
@@ -28,7 +29,7 @@ const PostCard = ({ post }) => {
                 
                 </div>
             </footer>
-        </Link>
+        </div>
     )
 }
 

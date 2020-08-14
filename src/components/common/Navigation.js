@@ -4,7 +4,9 @@ import { Link } from 'gatsby'
 
 const NavList = styled.ul`
     display: flex;
+    padding-left: 0;
     flex-direction: ${({ direction = `column` }) => direction };
+    justify-content: center;
 `
 
 const NavLink = styled(Link)`

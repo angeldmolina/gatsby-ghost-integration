@@ -4,6 +4,7 @@ import { Link } from 'gatsby'
 
 import config from '../../utils/siteConfig'
 import Navigation from './Navigation'
+import Banner from './Banner'
 
 import bg from '../../images/pg-bckg.png'
 
@@ -29,8 +30,12 @@ const PrimaryNav = styled.nav`
 `
 
 const SocialLinks = styled.div`
-    margin-left: auto;
+    margin: auto;
 
+    @media (min-width: 768px) {
+        margin-left: auto;
+        margin-right: initial;
+    }
     a {
         display: inline-block;
         padding: 20px 20px 10px 20px;
@@ -47,6 +52,11 @@ const SocialLinks = styled.div`
 const LogoLink = styled(Link)`
     display: block;
     margin-top: 6px;
+
+    img {
+        padding: 20px 0;
+        max-width: 100%;
+    }
 `
 
 const Header = ({ data, site, isHome }) => {
@@ -69,10 +79,10 @@ const Header = ({ data, site, isHome }) => {
                 </SocialLinks>
             </PrimaryNav>
             { isHome ?
-                <>
+                <Banner>
                     <h1>{site.title}</h1>
                     <p>{site.description}</p>
-                </> :
+                </Banner> :
                 null}
         </SHeader>
     )
