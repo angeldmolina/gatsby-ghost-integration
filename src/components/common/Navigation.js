@@ -1,11 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 
 const NavList = styled.ul`
     display: flex;
-    flex-direction: row;
+    flex-direction: ${({ direction = `column` }) => direction };
 `
 
 const NavLink = styled(Link)`
@@ -23,30 +22,16 @@ const NavLink = styled(Link)`
     }
 `
 
-const Navigation = ({ data, navClass }) => (
-    <NavList>
+const Navigation = ({ data, direction }) => (
+    <NavList direction={direction}>
         {data.map((navItem, i) => {
             if (navItem.url.match(/^\s?http(s?)/gi)) {
-                return <a className={navClass} href={navItem.url} key={i} target="_blank" rel="noopener noreferrer">{navItem.label}</a>
+                return <a href={navItem.url} key={i} target="_blank" rel="noopener noreferrer">{navItem.label}</a>
             } else {
-                return <NavLink className={navClass} to={navItem.url} key={i}>{navItem.label}</NavLink>
+                return <NavLink to={navItem.url} key={i}>{navItem.label}</NavLink>
             }
         })}
     </NavList>
 )
-
-Navigation.defaultProps = {
-    navClass: `site-nav-item`,
-}
-
-Navigation.propTypes = {
-    data: PropTypes.arrayOf(
-        PropTypes.shape({
-            label: PropTypes.string.isRequired,
-            url: PropTypes.string.isRequired,
-        }).isRequired,
-    ).isRequired,
-    navClass: PropTypes.string,
-}
 
 export default Navigation
