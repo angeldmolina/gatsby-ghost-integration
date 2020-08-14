@@ -1,15 +1,24 @@
 import React from 'react'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import { Tags } from '@tryghost/helpers-gatsby'
 import { readingTime as readingTimeHelper } from '@tryghost/helpers'
+
+const SPostCard = styled.div`
+    padding: 20px;
+    
+    p {
+        word-break: break-all;
+    }
+`
 
 const PostCard = ({ post }) => {
     const url = `/${post.slug}/`
     const readingTime = readingTimeHelper(post)
 
     return (
-        <div>
+        <SPostCard>
             <header className="post-card-header">
                 {post.feature_image &&
                     <div className="post-card-image" style={{
@@ -20,7 +29,7 @@ const PostCard = ({ post }) => {
                 {post.tags && <div className="post-card-tags">Posted in: <Tags post={post} visibility="public" autolink={false} /></div>}
                 {post.featured && <span>Featured</span>}
             </header>
-            <section className="post-card-excerpt">{post.excerpt}</section>
+            <p>{post.excerpt}</p>
             <footer className="post-card-footer">
                 <div className="post-card-footer-left"/>
                 <div>Published on {post.published_at_pretty}</div>
@@ -29,7 +38,7 @@ const PostCard = ({ post }) => {
                 
                 </div>
             </footer>
-        </div>
+        </SPostCard>
     )
 }
 

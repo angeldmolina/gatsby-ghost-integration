@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
@@ -7,12 +8,10 @@ import Wrapper from '../components/common/Wrapper'
 import Layout from '../components/common/Layout'
 import { MetaData } from '../components/common/meta'
 
-/**
-* Single post view (/:slug)
-*
-* This file renders a single post and loads all the content.
-*
-*/
+const Article = styled.article`
+    max-width: 720px;
+`
+
 const Post = ({ data, location }) => {
     const post = data.ghostPost
 
@@ -28,7 +27,7 @@ const Post = ({ data, location }) => {
             </Helmet>
             <Layout>
                 <Wrapper className="container">
-                    <article className="content">
+                    <Article className="content">
                         { post.feature_image ?
                             <figure className="post-feature-image">
                                 <img src={ post.feature_image } alt={ post.title } />
@@ -44,7 +43,7 @@ const Post = ({ data, location }) => {
                             <hr/>
                             <div>Published on {post.published_at_pretty}</div>
                         </section>
-                    </article>
+                    </Article>
                 </Wrapper>
             </Layout>
         </>

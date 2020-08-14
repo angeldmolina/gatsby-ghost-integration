@@ -6,13 +6,11 @@ import Helmet from 'react-helmet'
 import Wrapper from '../components/common/Wrapper'
 import Layout from '../components/common/Layout'
 import { MetaData } from '../components/common/meta'
+import styled from 'styled-components'
 
-/**
-* Single page (/:slug)
-*
-* This file renders a single page and loads all the content.
-*
-*/
+const Article = styled.article`
+    max-width: 720px;
+`
 const Page = ({ data, location }) => {
     const page = data.ghostPage
 
@@ -28,7 +26,7 @@ const Page = ({ data, location }) => {
             </Helmet>
             <Layout>
                 <Wrapper className="container">
-                    <article className="content">
+                    <Article className="content">
                         <h1 className="content-title">{page.title}</h1>
 
                         {/* The main page content */}
@@ -36,7 +34,7 @@ const Page = ({ data, location }) => {
                             className="content-body load-external-scripts"
                             dangerouslySetInnerHTML={{ __html: page.html }}
                         />
-                    </article>
+                    </Article>
                 </Wrapper>
             </Layout>
         </>

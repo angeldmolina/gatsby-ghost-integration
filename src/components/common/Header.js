@@ -80,8 +80,10 @@ const Header = ({ data, site, isHome }) => {
             </PrimaryNav>
             { isHome ?
                 <Banner>
-                    <h1>{site.title}</h1>
-                    <p>{site.description}</p>
+                    <div>
+                        <h1>{site.title}</h1>
+                        <p>{site.description}</p>
+                    </div>
                 </Banner> :
                 null}
         </SHeader>

@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
@@ -8,14 +9,14 @@ import PostCard from '../components/common/PostCard'
 import Pagination from '../components/common/Pagination'
 import { MetaData } from '../components/common/meta'
 
-/**
-* Main index page (home page)
-*
-* Loads all posts from Ghost and uses pagination to navigate through them.
-* The number of posts that should appear per page can be setup
-* in /utils/siteConfig.js under `postsPerPage`.
-*
-*/
+const PostFeed = styled.div`
+    @media (min-width: 768px){
+        display: grid;
+        grid-template-columns: repeat(3, 33%);
+        grid-gutter: 15px;
+    }
+`
+
 const Index = ({ data, location, pageContext }) => {
     const posts = data.allGhostPost.edges
 
@@ -24,12 +25,12 @@ const Index = ({ data, location, pageContext }) => {
             <MetaData location={location} />
             <Layout isHome={true}>
                 <Wrapper className="container">
-                    <section className="post-feed">
+                    <PostFeed>
                         {posts.map(({ node }) => (
                             // The tag below includes the markup for each post - components/common/PostCard.js
                             <PostCard key={node.id} post={node} />
                         ))}
-                    </section>
+                    </PostFeed>
                     <Pagination pageContext={pageContext} />
                 </Wrapper>
             </Layout>
