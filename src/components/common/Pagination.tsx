@@ -3,12 +3,14 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 
-const SPagination = styled.nav`
+const SPagination = styled.ul`
     margin: auto;
     display: flex;
     justify-content: center;
+    padding-left: 0;
+    list-style: none;
     
-    > * {
+    > li {
         padding: 20px;
     }
 `
@@ -17,26 +19,26 @@ const Pagination = ({ pageContext }) => {
     const { previousPagePath, nextPagePath, humanPageNumber, numberOfPages } = pageContext
 
     return (
-        <SPagination>
-            <div>
+        <nav>
+            <SPagination>
                 {previousPagePath && (
-
+                <li>
                     <Link to={previousPagePath} rel="prev">
                             Previous
                     </Link>
-
+                </li>
                 )}
-            </div>
-            {numberOfPages > 1 && <div className="pagination-location">Page {humanPageNumber} of {numberOfPages}</div>}
-            <div>
+            {numberOfPages > 1 && <li className="pagination-location">Page {humanPageNumber} of {numberOfPages}</li>}
+            <li>
                 {nextPagePath && (
 
                     <Link to={nextPagePath} rel="next">
                             Next
                     </Link>
                 )}
-            </div>
+            </li>
         </SPagination>
+        </nav>
     )
 }
 
