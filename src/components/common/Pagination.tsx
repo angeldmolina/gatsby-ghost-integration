@@ -1,12 +1,23 @@
 import React from 'react'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
+
+const SPagination = styled.nav`
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    
+    > * {
+        padding: 20px;
+    }
+`
 
 const Pagination = ({ pageContext }) => {
     const { previousPagePath, nextPagePath, humanPageNumber, numberOfPages } = pageContext
 
     return (
-        <nav className="pagination" role="navigation">
+        <SPagination>
             <div>
                 {previousPagePath && (
 
@@ -25,7 +36,7 @@ const Pagination = ({ pageContext }) => {
                     </Link>
                 )}
             </div>
-        </nav>
+        </SPagination>
     )
 }
 

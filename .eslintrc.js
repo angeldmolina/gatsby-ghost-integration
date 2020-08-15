@@ -49,11 +49,5 @@ module.exports = {
                 "functions": "ignore"
             }
         ],
-        "react/prop-types": [
-            "error",
-            {
-                "ignore": ["children"]
-            }
-        ]
     }
 };

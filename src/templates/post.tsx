@@ -7,6 +7,7 @@ import Helmet from 'react-helmet'
 import Wrapper from '../components/common/Wrapper'
 import Layout from '../components/common/Layout'
 import { MetaData } from '../components/common/meta'
+import Container from '../components/common/Container'
 
 const Article = styled.article`
     max-width: 720px;
@@ -27,6 +28,7 @@ const Post = ({ data, location }) => {
             </Helmet>
             <Layout>
                 <Wrapper className="container">
+                    <Container>
                     <Article className="content">
                         { post.feature_image ?
                             <figure className="post-feature-image">
@@ -44,6 +46,7 @@ const Post = ({ data, location }) => {
                             <div>Published on {post.published_at_pretty}</div>
                         </section>
                     </Article>
+                    </Container>
                 </Wrapper>
             </Layout>
         </>

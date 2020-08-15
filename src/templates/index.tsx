@@ -8,6 +8,7 @@ import Layout from '../components/common/Layout'
 import PostCard from '../components/common/PostCard'
 import Pagination from '../components/common/Pagination'
 import { MetaData } from '../components/common/meta'
+import Container from '../components/common/Container'
 
 const PostFeed = styled.div`
     @media (min-width: 768px){
@@ -25,12 +26,16 @@ const Index = ({ data, location, pageContext }) => {
             <MetaData location={location} />
             <Layout isHome={true}>
                 <Wrapper className="container">
+                    <Container maxWidth="1200px">
                     <PostFeed>
                         {posts.map(({ node }) => (
                             <PostCard key={node.id} post={node} />
                         ))}
                     </PostFeed>
-                    <Pagination pageContext={pageContext} />
+                    </Container>
+                    <Container>
+                        <Pagination pageContext={pageContext} />
+                    </Container>
                 </Wrapper>
             </Layout>
         </>
