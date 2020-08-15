@@ -57,13 +57,7 @@ export const pageQuery = graphql`
         sort: { order: DESC, fields: [published_at] },
         limit: $limit,
         skip: $skip
-        filter: {
-            authors: {
-                elemMatch: {
-                    id: {ne: "179e06da7ae846929bb30f19f3e82ecb"}
-                }
-            }
-        }
+        filter: {slug: {ne: "data-schema"}}
     ) {
       edges {
         node {
