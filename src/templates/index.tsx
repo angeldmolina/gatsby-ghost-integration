@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
 import Wrapper from '../components/common/Wrapper'
@@ -40,16 +39,6 @@ const Index = ({ data, location, pageContext }) => {
             </Layout>
         </>
     )
-}
-
-Index.propTypes = {
-    data: PropTypes.shape({
-        allGhostPost: PropTypes.object.isRequired,
-    }).isRequired,
-    location: PropTypes.shape({
-        pathname: PropTypes.string.isRequired,
-    }).isRequired,
-    pageContext: PropTypes.object,
 }
 
 export default Index

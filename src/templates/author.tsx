@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
 import Wrapper from '../components/common/Wrapper'
@@ -8,12 +7,6 @@ import PostCard from '../components/common/PostCard'
 import Pagination from '../components/common/Pagination'
 import { MetaData } from '../components/common/meta'
 
-/**
-* Author page (/author/:slug)
-*
-* Loads all posts for the requested author incl. pagination.
-*
-*/
 const Author = ({ data, location, pageContext }) => {
     const author = data.ghostAuthor
     const posts = data.allGhostPost.edges
@@ -45,7 +38,6 @@ const Author = ({ data, location, pageContext }) => {
                     </header>
                     <section className="post-feed">
                         {posts.map(({ node }) => (
-                            // The tag below includes the markup for each post - components/common/PostCard.js
                             <PostCard key={node.id} post={node} />
                         ))}
                     </section>
@@ -54,26 +46,6 @@ const Author = ({ data, location, pageContext }) => {
             </Layout>
         </>
     )
-}
-
-Author.propTypes = {
-    data: PropTypes.shape({
-        ghostAuthor: PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            cover_image: PropTypes.string,
-            profile_image: PropTypes.string,
-            website: PropTypes.string,
-            bio: PropTypes.string,
-            location: PropTypes.string,
-            facebook: PropTypes.string,
-            twitter: PropTypes.string,
-        }),
-        allGhostPost: PropTypes.object.isRequired,
-    }).isRequired,
-    location: PropTypes.shape({
-        pathname: PropTypes.string.isRequired,
-    }).isRequired,
-    pageContext: PropTypes.object,
 }
 
 export default Author

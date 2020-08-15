@@ -1,17 +1,5 @@
 import { graphql } from 'gatsby'
 
-/**
-* These so called fragments are the fields we query on each template.
-* A fragment make queries a bit more reuseable, so instead of typing and
-* remembering every possible field, you can just use
-*   ...GhostPostFields
-* for example to load all post fields into your GraphQL query.
-*
-* Further info 👉🏼 https://www.gatsbyjs.org/docs/graphql-reference/#fragments
-*
-*/
-
-// Used for tag archive pages
 export const ghostTagFields = graphql`
     fragment GhostTagFields on GhostTag {
         slug
@@ -24,7 +12,6 @@ export const ghostTagFields = graphql`
     }
 `
 
-// Used for author pages
 export const ghostAuthorFields = graphql`
     fragment GhostAuthorFields on GhostAuthor {
         slug
@@ -39,7 +26,6 @@ export const ghostAuthorFields = graphql`
     }
 `
 
-// Used for single posts
 export const ghostPostFields = graphql`
     fragment GhostPostFields on GhostPost {
         # Main fields
