@@ -9,7 +9,7 @@ const SPostCard = styled.div`
     padding: 20px;
     
     p {
-        word-break: break-all;
+        word-break: break-word;
     }
 `
 

@@ -27,7 +27,6 @@ const Index = ({ data, location, pageContext }) => {
                 <Wrapper className="container">
                     <PostFeed>
                         {posts.map(({ node }) => (
-                            // The tag below includes the markup for each post - components/common/PostCard.js
                             <PostCard key={node.id} post={node} />
                         ))}
                     </PostFeed>
