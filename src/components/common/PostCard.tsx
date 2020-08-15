@@ -19,23 +19,22 @@ const PostCard = ({ post }) => {
 
     return (
         <SPostCard>
-            <header className="post-card-header">
+            <header>
                 {post.feature_image &&
-                    <div className="post-card-image" style={{
+                    <div style={{
                         backgroundImage: `url(${post.feature_image})` ,
                     }}></div>}
                 <Link to={url}>
-                    <h2 className="post-card-title">{post.title}</h2></Link>
-                {post.tags && <div className="post-card-tags">Posted in: <Tags post={post} visibility="public" autolink={false} /></div>}
-                {post.featured && <span>Featured</span>}
+                    <h2>{post.title}</h2></Link>
             </header>
             <p>{post.excerpt}</p>
-            <footer className="post-card-footer">
-                <div className="post-card-footer-left"/>
+            <footer>
+                <div/>
                 <div>Published on {post.published_at_pretty}</div>
-                <div className="post-card-footer-right">
+                {post.tags.length > 0 && <div>Posted in: <Tags post={post} visibility="public" autolink={false} /></div>}
+                {post.featured && <span>Featured</span>}
+                <div>
                     <div>{readingTime}</div>
-                
                 </div>
             </footer>
         </SPostCard>

@@ -22,6 +22,8 @@ const PrimaryNav = styled.nav`
     flex-direction: column;
     padding: 0 40px;
     background-image: url(${bg});
+    max-width: 1200px;
+    margin: auto;
 
     @media (min-width: 768px) {
         flex-direction: row;
@@ -52,6 +54,7 @@ const SocialLinks = styled.div`
 const LogoLink = styled(Link)`
     display: block;
     margin-top: 6px;
+    margin-right: 20px;
 
     img {
         padding: 20px 0;

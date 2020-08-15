@@ -7,6 +7,7 @@ import Wrapper from '../components/common/Wrapper'
 import Layout from '../components/common/Layout'
 import { MetaData } from '../components/common/meta'
 import styled from 'styled-components'
+import Container from '../components/common/Container'
 
 const Article = styled.article`
     max-width: 720px;
@@ -26,15 +27,15 @@ const Page = ({ data, location }) => {
             </Helmet>
             <Layout>
                 <Wrapper className="container">
-                    <Article className="content">
-                        <h1 className="content-title">{page.title}</h1>
-
-                        {/* The main page content */}
-                        <section
-                            className="content-body load-external-scripts"
-                            dangerouslySetInnerHTML={{ __html: page.html }}
-                        />
-                    </Article>
+                    <Container>
+                        <Article className="content">
+                            <h1 className="content-title">{page.title}</h1>
+                            <section
+                                className="content-body load-external-scripts"
+                                dangerouslySetInnerHTML={{ __html: page.html }}
+                            />
+                        </Article>
+                    </Container>
                 </Wrapper>
             </Layout>
         </>
