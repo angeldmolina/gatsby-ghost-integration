@@ -179,9 +179,9 @@ module.exports = {
                 addUncaughtPages: true,
             },
         },
+        `gatsby-plugin-styled-components`,
         `gatsby-plugin-catch-links`,
         `gatsby-plugin-react-helmet`,
-        `gatsby-plugin-force-trailing-slashes`,
         `gatsby-plugin-offline`,
     ],
 }
