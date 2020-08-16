@@ -7,6 +7,7 @@ import Wrapper from '../components/common/Wrapper'
 import Layout from '../components/common/Layout'
 import { MetaData } from '../components/common/meta'
 import Container from '../components/common/Container'
+import Article from '../components/common/Article'
 
 const Post = ({ data, location }) => {
     const post = data.ghostPost
@@ -24,7 +25,7 @@ const Post = ({ data, location }) => {
             <Layout>
                 <Wrapper className="container">
                     <Container>
-                    <article className="content">
+                    <Article className="content">
                         { post.feature_image ?
                             <figure className="post-feature-image">
                                 <img src={ post.feature_image } alt={ post.title } />
@@ -39,7 +40,7 @@ const Post = ({ data, location }) => {
                             <hr/>
                             <div>Published on {post.published_at_pretty}</div>
                         </section>
-                    </article>
+                    </Article>
                     </Container>
                 </Wrapper>
             </Layout>
