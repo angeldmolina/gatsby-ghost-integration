@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 
 import Wrapper from '../components/common/Wrapper'
 import Layout from '../components/common/Layout'
@@ -8,6 +8,9 @@ import PostCard from '../components/common/PostCard'
 import Pagination from '../components/common/Pagination'
 import { MetaData } from '../components/common/meta'
 import Container from '../components/common/Container'
+import Banner from '../components/common/Banner'
+
+import bgLight from '../images/pg-bckg-light.png'
 
 const PostFeed = styled.div`
     @media (min-width: 768px){
@@ -24,7 +27,7 @@ const Index = ({ data, location, pageContext }) => {
         <>
             <MetaData location={location} />
             <Layout isHome={true}>
-                <Wrapper className="container">
+                <Wrapper light={true}>
                     <Container maxWidth="1200px">
                     <PostFeed>
                         {posts.map(({ node }) => (
@@ -34,6 +37,17 @@ const Index = ({ data, location, pageContext }) => {
                     </Container>
                     <Container>
                         <Pagination pageContext={pageContext} />
+                    </Container>
+                </Wrapper>
+                <Wrapper bgImage={data.jumpPoint.childImageSharp.fluid.src}>
+                    <Container>
+                        <Banner>
+                            <div>
+                                <h2>Jump Point Forming!</h2>
+                                <p>Visit the Jump Point and discover other places where Babylon 5 is being discussed.</p>
+                                <Link to="/links">Jump point</Link>
+                            </div>
+                        </Banner>
                     </Container>
                 </Wrapper>
             </Layout>
@@ -58,6 +72,13 @@ export const pageQuery = graphql`
           ...GhostPostFields
         }
       }
+    },
+      jumpPoint: file(relativePath: { eq: "jumppoint.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          src
+        }
+      }
     }
-  }
+    }
 `

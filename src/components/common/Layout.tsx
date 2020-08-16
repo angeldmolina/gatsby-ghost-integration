@@ -13,13 +13,10 @@ const DefaultLayout = ({ data, children, isHome }) => {
         <>
             <GlobalStyles />
             <div className="viewport">
-
                 <Header data={data} site={site} isHome={isHome}/>
-
                 <main>
                     {children}
                 </main>
-
                 <Footer site={site}/>
 
             </div>
