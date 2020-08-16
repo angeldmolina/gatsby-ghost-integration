@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 
@@ -8,10 +7,6 @@ import Wrapper from '../components/common/Wrapper'
 import Layout from '../components/common/Layout'
 import { MetaData } from '../components/common/meta'
 import Container from '../components/common/Container'
-
-const Article = styled.article`
-    max-width: 720px;
-`
 
 const Post = ({ data, location }) => {
     const post = data.ghostPost
@@ -29,7 +24,7 @@ const Post = ({ data, location }) => {
             <Layout>
                 <Wrapper className="container">
                     <Container>
-                    <Article className="content">
+                    <article className="content">
                         { post.feature_image ?
                             <figure className="post-feature-image">
                                 <img src={ post.feature_image } alt={ post.title } />
@@ -37,7 +32,6 @@ const Post = ({ data, location }) => {
                         <section className="post-full-content">
                             <h1 className="content-title">{post.title}</h1>
 
-                            {/* The main post content */ }
                             <section
                                 className="content-body load-external-scripts"
                                 dangerouslySetInnerHTML={{ __html: post.html }}
@@ -45,25 +39,12 @@ const Post = ({ data, location }) => {
                             <hr/>
                             <div>Published on {post.published_at_pretty}</div>
                         </section>
-                    </Article>
+                    </article>
                     </Container>
                 </Wrapper>
             </Layout>
         </>
     )
-}
-
-Post.propTypes = {
-    data: PropTypes.shape({
-        ghostPost: PropTypes.shape({
-            codeinjection_styles: PropTypes.object,
-            title: PropTypes.string.isRequired,
-            html: PropTypes.string.isRequired,
-            feature_image: PropTypes.string,
-            published_at_pretty: PropTypes.string,
-        }).isRequired,
-    }).isRequired,
-    location: PropTypes.object.isRequired,
 }
 
 export default Post

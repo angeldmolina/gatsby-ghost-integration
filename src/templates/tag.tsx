@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
 import Wrapper from '../components/common/Wrapper'
@@ -8,12 +7,6 @@ import PostCard from '../components/common/PostCard'
 import Pagination from '../components/common/Pagination'
 import { MetaData } from '../components/common/meta'
 
-/**
-* Tag page (/tag/:slug)
-*
-* Loads all posts for the requested tag incl. pagination.
-*
-*/
 const Tag = ({ data, location, pageContext }) => {
     const tag = data.ghostTag
     const posts = data.allGhostPost.edges
@@ -33,7 +26,6 @@ const Tag = ({ data, location, pageContext }) => {
                     </header>
                     <section className="post-feed">
                         {posts.map(({ node }) => (
-                            // The tag below includes the markup for each post - components/common/PostCard.js
                             <PostCard key={node.id} post={node} />
                         ))}
                     </section>
@@ -42,20 +34,6 @@ const Tag = ({ data, location, pageContext }) => {
             </Layout>
         </>
     )
-}
-
-Tag.propTypes = {
-    data: PropTypes.shape({
-        ghostTag: PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            description: PropTypes.string,
-        }),
-        allGhostPost: PropTypes.object.isRequired,
-    }).isRequired,
-    location: PropTypes.shape({
-        pathname: PropTypes.string.isRequired,
-    }).isRequired,
-    pageContext: PropTypes.object,
 }
 
 export default Tag
