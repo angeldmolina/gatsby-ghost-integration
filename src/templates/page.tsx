@@ -6,6 +6,7 @@ import Wrapper from '../components/common/Wrapper'
 import Layout from '../components/common/Layout'
 import { MetaData } from '../components/common/meta'
 import Container from '../components/common/Container'
+import Article from '../components/common/Article'
 
 const Page = ({ data, location }) => {
     const page = data.ghostPage
@@ -23,13 +24,13 @@ const Page = ({ data, location }) => {
             <Layout>
                 <Wrapper className="container">
                     <Container>
-                        <article className="content">
+                        <Article className="content">
                             <h1 className="content-title">{page.title}</h1>
                             <section
                                 className="content-body load-external-scripts"
                                 dangerouslySetInnerHTML={{ __html: page.html }}
                             />
-                        </article>
+                        </Article>
                     </Container>
                 </Wrapper>
             </Layout>
