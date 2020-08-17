@@ -11,6 +11,7 @@ import Container from '../components/common/Container'
 import Banner from '../components/common/Banner'
 
 import bgLight from '../images/pg-bckg-light.png'
+import Alert from '../components/common/Alert'
 
 const PostFeed = styled.div`
     @media (min-width: 768px){
@@ -27,7 +28,15 @@ const Index = ({ data, location, pageContext }) => {
         <>
             <MetaData location={location} />
             <Layout isHome={true}>
-                <Wrapper light={true}>
+                <Wrapper dark={true}>
+                    <Container>
+                        <Alert>
+                            <p>Babylon 5 is a game-changing, ground breaking, emmy-award winning TV series that is in danger of becoming lost and forgotten.</p>
+                            <p>We are not going to let that happen. Please join us and help <i>#FreeBabylon5</i></p>
+                        </Alert>
+                    </Container>
+                </Wrapper>
+                <Wrapper>
                     <Container maxWidth="1200px">
                     <PostFeed>
                         {posts.map(({ node }) => (
@@ -37,6 +46,27 @@ const Index = ({ data, location, pageContext }) => {
                     </Container>
                     <Container>
                         <Pagination pageContext={pageContext} />
+                    </Container>
+                </Wrapper>
+                <Wrapper bgImage={data.characters.childImageSharp.fluid.src}>
+                    <Container>
+                        <Banner>
+                            <div>
+                                <h2>Our Last, Best Hope.</h2>
+                                <p>Babylon 5 changed our lives. It changed a lot of things.</p>
+                                <p>This might be the last, best hope we have.</p>
+                                <Link to="/watch/">Watch Babylon 5 now</Link>
+                            </div>
+                        </Banner>
+                    </Container>
+                </Wrapper>
+                <Wrapper dark={true}>
+                    <Container>
+                        <Alert>
+                            <h2>Blu-ray / HD Edition</h2>
+                            <p>Its is very unlikely that a blu-ray or hi definition version of Babbylon 5 could ever be created. This recent discussion hilights the problem:</p>
+                            <Link to="/why-theres-no-blu-ray-edition/">Why there's no blu-ray Edition</Link>
+                        </Alert>
                     </Container>
                 </Wrapper>
                 <Wrapper bgImage={data.jumpPoint.childImageSharp.fluid.src}>
@@ -73,12 +103,19 @@ export const pageQuery = graphql`
         }
       }
     },
-      jumpPoint: file(relativePath: { eq: "jumppoint.jpg" }) {
+    jumpPoint: file(relativePath: { eq: "jumppoint.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1200) {
           src
         }
       }
     }
+    characters: file(relativePath: { eq: "charachters.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1200) {
+          src
+        }
+      }
     }
+  }
 `

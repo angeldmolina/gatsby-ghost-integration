@@ -20,6 +20,10 @@ const Wrapper = styled.div<IWrapperProps>`
     ${({dark = false}) => dark && `
         background: url(${bg});
         color: white;
+
+        a {
+            color: white;
+        }
     `};
 `
 
