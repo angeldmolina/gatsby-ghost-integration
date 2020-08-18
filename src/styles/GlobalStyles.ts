@@ -19,5 +19,10 @@ const GlobalStyles = createGlobalStyle`
     h3 {
         font-family: SerpentineMedium, Verdana, sans-serif;
     }
+    @media (min-width: 768px) {
+        h1 {
+        font-size: 3em;
+    }
+    }
 `
 export default GlobalStyles
