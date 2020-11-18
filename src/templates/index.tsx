@@ -14,7 +14,7 @@ import Alert from '../components/common/Alert'
 const PostFeed = styled.div`
     display: grid;
     grid-gap: 15px;
-    
+
     @media (min-width: 768px){
         grid-template-columns: repeat(3,32.25%);
     }
@@ -63,8 +63,10 @@ const Index = ({ data, location, pageContext }) => {
                     <Container>
                         <Alert>
                             <h2>Blu-ray / HD Edition</h2>
-                            <p>Its is very unlikely that a blu-ray or hi definition version of Babbylon 5 could ever be created. This recent discussion hilights the problem:</p>
-                            <Link to="/why-theres-no-blu-ray-edition/">Why there's no blu-ray Edition</Link>
+                            <p>Its is very unlikely that a blu-ray or hi definition version of Babylon 5 could ever be created. This recent discussion hilights the problem:</p>
+                            <Link style={{ color: 'darkblue' }} to="/why-theres-no-blu-ray-edition/">Why there's no blu-ray Edition</Link>
+                            <br/><br/>
+                            <Link style={{ color: 'darkblue' }} to="/official-remasters-published/">There is, however a remastered edition</Link>
                         </Alert>
                     </Container>
                 </Wrapper>
