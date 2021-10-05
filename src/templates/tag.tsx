@@ -1,6 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+import PostFeed from '../components/common/PostFeed'
+import Container from '../components/common/Container'
 import Wrapper from '../components/common/Wrapper'
 import Layout from '../components/common/Layout'
 import PostCard from '../components/common/PostCard'
@@ -20,15 +22,17 @@ const Tag = ({ data, location, pageContext }) => {
             />
             <Layout>
                 <Wrapper className="container">
-                    <header className="tag-header">
-                        <h1>{tag.name}</h1>
-                        {tag.description ? <p>{tag.description}</p> : null }
-                    </header>
-                    <section className="post-feed">
-                        {posts.map(({ node }) => (
-                            <PostCard key={node.id} post={node} />
-                        ))}
-                    </section>
+                    <Container maxWidth="1200px">
+                        <header className="tag-header">
+                            <h1>Tag: {tag.name}</h1>
+                            {tag.description ? <p>{tag.description}</p> : null }
+                        </header>
+                        <PostFeed>
+                            {posts.map(({ node }) => (
+                                <PostCard key={node.id} post={node} />
+                            ))}
+                        </PostFeed>
+                    </Container>
                     <Pagination pageContext={pageContext} />
                 </Wrapper>
             </Layout>

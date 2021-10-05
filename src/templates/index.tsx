@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { graphql, Link } from 'gatsby'
 
 import Wrapper from '../components/common/Wrapper'
+import PostFeed from '../components/common/PostFeed'
 import Layout from '../components/common/Layout'
 import PostCard from '../components/common/PostCard'
 import Pagination from '../components/common/Pagination'
@@ -10,15 +11,6 @@ import { MetaData } from '../components/common/meta'
 import Container from '../components/common/Container'
 import Banner from '../components/common/Banner'
 import Alert from '../components/common/Alert'
-
-const PostFeed = styled.div`
-    display: grid;
-    grid-gap: 15px;
-
-    @media (min-width: 768px){
-        grid-template-columns: repeat(3,32.25%);
-    }
-`
 
 const Index = ({ data, location, pageContext }) => {
     const posts = data.allGhostPost.edges
@@ -37,11 +29,11 @@ const Index = ({ data, location, pageContext }) => {
                 </Wrapper>
                 <Wrapper>
                     <Container maxWidth="1200px">
-                    <PostFeed>
-                        {posts.map(({ node }) => (
-                            <PostCard key={node.id} post={node} />
-                        ))}
-                    </PostFeed>
+                        <PostFeed>
+                            {posts.map(({ node }) => (
+                                <PostCard key={node.id} post={node} />
+                            ))}
+                        </PostFeed>
                     </Container>
                     <Container>
                         <Pagination pageContext={pageContext} />
@@ -64,9 +56,9 @@ const Index = ({ data, location, pageContext }) => {
                         <Alert>
                             <h2>Blu-ray / HD Edition</h2>
                             <p>Its is very unlikely that a blu-ray or hi definition version of Babylon 5 could ever be created. This recent discussion hilights the problem:</p>
-                            <Link style={{ color: 'darkblue' }} to="/why-theres-no-blu-ray-edition/">Why there's no blu-ray Edition</Link>
+                            <Link style={{ color: `darkblue` }} to="/why-theres-no-blu-ray-edition/">Why there's no blu-ray Edition</Link>
                             <br/><br/>
-                            <Link style={{ color: 'darkblue' }} to="/official-remasters-published/">There is, however a remastered edition</Link>
+                            <Link style={{ color: `darkblue` }} to="/official-remasters-published/">There is, however a remastered edition</Link>
                         </Alert>
                     </Container>
                 </Wrapper>
